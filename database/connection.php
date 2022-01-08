@@ -1,7 +1,7 @@
 <?php
     function connect(){
         $db = new PDO(
-            "mysql:host=127.0.0.1; dbname=bookshelf",
+            "mysql:host=127.0.0.1; dbname=booklist",
             "root",
             ""
         );
