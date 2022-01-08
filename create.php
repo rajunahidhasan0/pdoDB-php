@@ -1,13 +1,4 @@
 <?php
-$db = '';
-
-if (file_exists('db.json')) {
-    $json = file_get_contents('db.json');
-    $db = json_decode($json, true);
-} else {
-    $db = array();
-}
-
 
 if (isset($_GET['title'])) {
     array_push($db, $data);
