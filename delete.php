@@ -1,19 +1,11 @@
 <?php
-    $db = '';
+    $id = $_GET['id'];
+    
+    require 'database/connection.php';
+    require 'database/functions.php';
 
-    if(file_exists('db.json')){
-        $json = file_get_contents('db.json');
-        $db = json_decode($json, true);
-    }
-    else{
-        $db = array();
-    }
-
-    $key = $_GET['id'];
-    array_splice($db, $key, 1);
-
-    $db_enc = json_encode($db);
-    file_put_contents('db.json', $db_enc);
+    $pddb = connect();
+    drop($pddb, $id);
 
     header('Location: index.php');
 ?>

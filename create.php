@@ -10,20 +10,18 @@ if (file_exists('db.json')) {
 
 
 if (isset($_GET['title'])) {
-    $data = array(
-        'title' => htmlspecialchars($_GET['title']),
-        'author' => $_GET['author'],
-        'available' => $_GET['available'],
-        'pages' => $_GET['pages'],
-        'isbn' => $_GET['isbn']
-    );
-
     array_push($db, $data);
 
     $db_enc = json_encode($db);
     file_put_contents('db.json', $db_enc);
 
     $added = true;
+
+    require "database/connection.php";
+    require "database/functions.php";
+    $pddb = connect();
+    add($pddb, htmlspecialchars($_GET['title']), $_GET['author'],  $_GET['available'], 
+                        $_GET['isbn'], $_GET['pages']);
 
     header('Location: index.php');
 }

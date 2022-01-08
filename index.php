@@ -1,13 +1,12 @@
 <?php
-$db = '';
+   
+   require 'database/connection.php';
+   require 'database/functions.php';
+   include_once 'database/createdb.php';
 
-if (file_exists('db.json')) {
-    $json = file_get_contents('db.json');
-    $db = json_decode($json, true);
-} else {
-    $db = array();
-}
-
+   $pddb = connect();
+   create_if_not_exists($pddb);
+   $db = show_table($pddb);
 ?>
 
 
