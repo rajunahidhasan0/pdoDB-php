@@ -2,7 +2,7 @@
 
  
 require 'database/connection.php';
-require 'database/utility.php';
+require 'database/functions.php';
 //include_once 'database/createdb.php';
 
 $pddb = connect();
