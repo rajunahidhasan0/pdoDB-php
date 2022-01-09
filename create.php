@@ -1,10 +1,6 @@
 <?php
 
 if (isset($_GET['title'])) {
-    array_push($db, $data);
-
-    $db_enc = json_encode($db);
-    file_put_contents('db.json', $db_enc);
 
     $added = true;
 
