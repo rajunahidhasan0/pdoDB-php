@@ -3,7 +3,6 @@
  
 require 'database/connection.php';
 require 'database/functions.php';
-//include_once 'database/createdb.php';
 
 $pddb = connect();
 //create_if_not_exists($pddb);
@@ -19,10 +18,16 @@ if (isset($_POST['search'])) {
 
     foreach ($db as $key => $obj) :
         foreach ($obj as $key1 => $obj1) :
-            if (strpos(strtoupper($obj1), strtoupper($search_key)) !== false) {
-                array_push($entries, $db[$key]);
-                break;
-            }
+                if(!empty($search_key)){
+                    if (strpos(strtoupper($obj1), strtoupper($search_key)) !== false) {
+                        array_push($entries, $obj);
+                        break;
+                    }
+                }
+                else{
+                    array_push($entries, $obj);
+                    break;
+                }
         endforeach;
     endforeach;
 }
