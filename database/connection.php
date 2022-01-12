@@ -1,17 +1,15 @@
 <?php
     function connect(){
-        $db = new PDO(
-            "mysql:host=sql6.freesqldatabase.com; dbname=sql6465183",
-            "sql6465183",
-            "E2tUiYDC19" 
-        );
-        
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    
-        if(!$db){
-            echo 'Database not connected!';
-        }
-        return $db;
+        $server_name = "sql6.freesqldatabase.com";
+        $username = "sql6465183";
+        $password = "E2tUiYDC19";
+        $db_name = "sql6465183";
+        try {
+            $conn = new PDO("mysql:host=$server_name;dbname=$db_name", $username, $password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $conn;
+          } catch(PDOException $e) {
+            return -1;
+          }
     }
-
-?>
